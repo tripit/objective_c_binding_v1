@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "OAuthSampleRootViewControllerTouch.m"
-         timestampString = "371504693.7192"
+         timestampString = "371515281.434912"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "188"
-         endingLineNumber = "188"
+         startingLineNumber = "206"
+         endingLineNumber = "206"
          landmarkName = "-dealloc"
          landmarkType = "5">
       </FileBreakpoint>

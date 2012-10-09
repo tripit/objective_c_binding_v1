@@ -217,10 +217,17 @@ finishedWithAuth:(GTMOAuthAuthentication *)returnedAuth
 
 // Performs the 'create' API call
 // http://tripit.github.com/api/doc/v1/index.html#method_create
-- (void)performCreateObjectWithXmlString:(NSString *)xmlString {
+- (void)performCreateObjectWithString:(NSString *)postString isJson:(BOOL)isJson{
     
     NSString *urlStr = [NSString stringWithFormat:@"%@/create", baseApiUrlStr];
-    NSString *post = [NSString stringWithFormat:@"xml=%@", xmlString];
+    NSMutableString *post = [NSMutableString stringWithCapacity:100];
+    if (isJson) {
+        [post appendString:@"format=json&json="];
+    }
+    else {
+        [post appendString:@"format=xml&xml="];
+    }
+    [post appendString:postString];
     
     [self performApiFetch:urlStr 
                    isPost:true
@@ -231,10 +238,19 @@ finishedWithAuth:(GTMOAuthAuthentication *)returnedAuth
 // http://tripit.github.com/api/doc/v1/index.html#method_replace
 - (void)performReplaceObjectOfType:(NSString *)objType 
                             withId:(NSString *)objId 
-                     withXmlString:(NSString *)xmlString {
+                        withString:(NSString *)postString 
+                            isJson:(BOOL)isJson {
     
     NSString *urlStr = [NSString stringWithFormat:@"%@/replace/%@/id/%@", baseApiUrlStr, objType, objId];
-    NSString *post = [NSString stringWithFormat:@"xml=%@", xmlString];
+    NSMutableString *post = [NSMutableString stringWithCapacity:100];
+    if (isJson) {
+        [post appendString:@"format=json&json="];
+    }
+    else {
+        [post appendString:@"format=xml&xml="];
+    }
+    [post appendString:postString];
+//    NSString *post = [NSString stringWithFormat:@"xml=%@", postString];
     
     [self performApiFetch:urlStr 
                    isPost:true

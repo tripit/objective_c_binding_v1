@@ -60,9 +60,9 @@
 
 - (void)performDeleteObjectOfType:(NSString *)objType withId:(NSString *)objId;
 
-- (void)performCreateObjectWithXmlString:(NSString *)xmlString;
+- (void)performCreateObjectWithString:(NSString *)postString isJson:(BOOL)isJson;
 
-- (void)performReplaceObjectOfType:(NSString *)objType withId:(NSString *)objId withXmlString:(NSString *)xmlString;
+- (void)performReplaceObjectOfType:(NSString *)objType withId:(NSString *)objId withString:(NSString *)postString isJson:(BOOL)isJson;
 
 @end
 

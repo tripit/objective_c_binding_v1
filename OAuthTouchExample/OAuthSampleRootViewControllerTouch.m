@@ -111,7 +111,7 @@
 //        "<end_date>2014-12-27</end_date>" \
 //        "<primary_location>New York, NY</primary_location>" \
 //        "</Trip></Request>";
-//    [tripIt performCreateObjectWithXmlString:post];
+//    [tripIt performCreateObjectWithString:post isJson:false];
     
     //replace endpoint
 //    NSString *post = @"<Request><Trip>" \
@@ -119,10 +119,28 @@
 //        "<end_date>2014-02-01</end_date>" \
 //        "<primary_location>New York, NY</primary_location>" \
 //        "</Trip></Request>";
-//    [tripIt performReplaceObjectOfType:@"trip" withId:@"50161232" withXmlString:post];
+//    [tripIt performReplaceObjectOfType:@"trip" withId:@"50195261" withString:post isJson:false];
     
     // delete endpoint
 //    [tripIt performDeleteObjectOfType:@"trip" withId:@"50161232"];
+    
+    // JSON create example
+//    NSString *post = @"{\"Trip\": \
+//        {\"start_date\":\"2014-12-09\", \
+//        \"end_date\":\"2014-12-27\", \
+//        \"primary_location\":\"New York, NY\" \
+//        } \
+//    }";
+//    [tripIt performCreateObjectWithString:post isJson:true];
+    
+    // JSON replace example
+//    NSString *post = @"{\"Trip\": \
+//    {\"start_date\":\"2015-01-09\", \
+//    \"end_date\":\"2015-01-27\", \
+//    \"primary_location\":\"New York, NY\" \
+//    } \
+//    }";
+//    [tripIt performReplaceObjectOfType:@"trip" withId:@"50195492" withString:post isJson:true];
     
 }
 

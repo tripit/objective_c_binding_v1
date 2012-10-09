@@ -343,6 +343,60 @@ static const NSTimeInterval kDefaultNetworkLossTimeoutInterval = 30.0;
   return YES;
 }
 
+// Tariq Method
+- (BOOL)requestRedirected:(NSURL *)requestURL {
+    // compare the callback URL, which tells us when the web sign-in is done,
+    // to the actual redirect URL
+    NSString *callback = [auth_ callback];
+    if ([callback length] == 0) {
+        // with no callback specified for the auth, the window will never
+        // automatically close
+#if DEBUG
+        NSAssert(0, @"GTMOAuthSignIn: No authentication callback specified");
+#endif
+        return NO;
+    }
+    
+    NSURL *callbackURL = [NSURL URLWithString:callback];
+    
+    BOOL isCallback = [[callbackURL host] isEqual:[requestURL host]]
+    && [[callbackURL path] isEqual:[requestURL path]];
+    
+    if (!isCallback) {
+        // tell the caller that this request is nothing interesting
+        return NO;
+    }
+    
+    // the callback page was requested, so tell the window to close
+    [self closeTheWindow];
+    
+    // notify the app so it can put up a post-sign in, pre-access token fetch UI
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:kGTMOAuthUserHasSignedIn
+                      object:self
+                    userInfo:nil];
+    
+    // once the authorization finishes, try to get a validated access token
+    NSString *responseStr = [requestURL query];
+    [auth_ setKeysForResponseString:responseStr];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:accessURL_];
+    [auth_ addAccessTokenHeaderToRequest:request];
+    
+    GTMHTTPFetcher *fetcher = [self fetcherWithRequest:request];
+    [fetcher setCommentWithFormat:@"access token for %@", [accessURL_ host]];
+    
+    [fetcher beginFetchWithDelegate:self
+                  didFinishSelector:@selector(accessFetcher:finishedWithData:error:)];
+    
+    [self setPendingFetcher:fetcher fetchType:kGTMOAuthFetchTypeAccess];
+    
+    // tell the delegate that we did handle this request
+    return YES;
+}
+
+
+
 - (void)accessFetcher:(GTMHTTPFetcher *)fetcher finishedWithData:(NSData *)data error:(NSError *)error {
   [self setPendingFetcher:nil fetchType:nil];
 

@@ -18,35 +18,22 @@
 @class GTMOAuthAuthentication;
 
 @interface OAuthSampleRootViewControllerTouch : UIViewController <UINavigationControllerDelegate, TripItApiDelegate> {
-//  UISwitch *mShouldSaveInKeychainSwitch;
-//  UISegmentedControl *mServiceSegments;
   UIBarButtonItem *mSignInOutButton;
-//  int mNetworkActivityCounter;
   UILabel *mEmailField;
   UILabel *mTokenField;
   GTMOAuthAuthentication *mAuth;
 }
-//@property (nonatomic, retain) IBOutlet UISegmentedControl *serviceSegments;
-//@property (nonatomic, retain) IBOutlet UISwitch *shouldSaveInKeychainSwitch;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *signInOutButton;
 @property (nonatomic, retain) IBOutlet UILabel *emailField;
 @property (nonatomic, retain) IBOutlet UILabel *tokenField;
 @property (retain) TripIt *tripIt;
 
 - (IBAction)signInOutClicked:(id)sender;
-//- (IBAction)toggleShouldSaveInKeychain:(id)sender;
 
-//- (void)signInToGoogle;
 - (void)signInToTripIt;
-//- (void)signOut;
+
 - (BOOL)isSignedIn;
 
 - (void)updateUI;
-
-//- (void)setAuthentication:(GTMOAuthAuthentication *)auth;
-
-//- (void)apiReturnedWithString:(NSString *)returnStr error:(NSError *)error;
-//
-//- (void)oauthReturnedWithString:(NSString *)returnStr error:(NSError *)error;
 
 @end

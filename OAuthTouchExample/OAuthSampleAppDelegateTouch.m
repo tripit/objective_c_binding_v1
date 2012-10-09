@@ -37,5 +37,21 @@
   [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+// Need to implement this function in order to get the callback redirect from the browser after
+// the user signs in to TripIt to approve the app.
+- (BOOL)application:(UIApplication *)application 
+            openURL:(NSURL *)url 
+  sourceApplication:(NSString *)sourceApplication 
+         annotation:(id)annotation {
+    if (!url) {  
+        return NO; 
+    }
+    // Continue on with the 3rd part of OAuth flow
+    OAuthSampleRootViewControllerTouch *mvc = (OAuthSampleRootViewControllerTouch *) self.navigationController.topViewController;
+    [mvc.tripIt performGetAuthorization:url];
+    
+    return YES;
+}
+
 @end
 

@@ -142,6 +142,7 @@ enum {
 // was handled by the sign-in object (typically by closing the window)
 // and the request should be ignored by the window controller's web view
 - (BOOL)requestRedirectedToRequest:(NSURLRequest *)redirectedRequest;
+- (BOOL)requestRedirected:(NSURL *)requestURL;
 
 // Window controllers must tell the sign-in object if the window was closed
 // prematurely by the user (but not by the sign-in object); this calls the

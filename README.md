@@ -4,7 +4,6 @@ GTMHTTPFetcher.h/m
 GTMHTTPFetcherLogging.h/m (useful for debugging)
 GTMOAuthAuthentication.h/m
 GTMOAuthSignIn.h/m
-GTMOAuthViewControllerTouch.h/m
 GTMOAuthViewTouch.xib
 TripIt.h/m
 

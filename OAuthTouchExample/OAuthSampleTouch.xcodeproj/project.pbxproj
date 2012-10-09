@@ -23,8 +23,6 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
-		421E25FA16012FA20052332E /* GTMOAuthViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E25F916012FA20052332E /* GTMOAuthViewControllerTouch.m */; };
-		421E25FB16012FA20052332E /* GTMOAuthViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E25F916012FA20052332E /* GTMOAuthViewControllerTouch.m */; };
 		421E25FF16012FD70052332E /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E25FE16012FD70052332E /* GTMHTTPFetcher.m */; };
 		421E260016012FD70052332E /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E25FE16012FD70052332E /* GTMHTTPFetcher.m */; };
 		421E260516012FE50052332E /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E260216012FE50052332E /* GTMOAuthAuthentication.m */; };
@@ -59,8 +57,6 @@
 		1D6058910D05DD3D006BFB54 /* OAuthSample-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OAuthSample-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		421E25F816012FA20052332E /* GTMOAuthViewControllerTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthViewControllerTouch.h; sourceTree = "<group>"; };
-		421E25F916012FA20052332E /* GTMOAuthViewControllerTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthViewControllerTouch.m; sourceTree = "<group>"; };
 		421E25FD16012FD70052332E /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
 		421E25FE16012FD70052332E /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMHTTPFetcher.m; sourceTree = "<group>"; };
 		421E260116012FE50052332E /* GTMOAuthAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthAuthentication.h; sourceTree = "<group>"; };
@@ -176,8 +172,6 @@
 			children = (
 				427056E315FA59AD00EA2F44 /* GTMHTTPFetcherLogging.h */,
 				427056E415FA59AD00EA2F44 /* GTMHTTPFetcherLogging.m */,
-				421E25F816012FA20052332E /* GTMOAuthViewControllerTouch.h */,
-				421E25F916012FA20052332E /* GTMOAuthViewControllerTouch.m */,
 				421E25FD16012FD70052332E /* GTMHTTPFetcher.h */,
 				421E25FE16012FD70052332E /* GTMHTTPFetcher.m */,
 				421E260C160130250052332E /* TripIt.h */,
@@ -286,7 +280,6 @@
 				13E350A1119CA9AE00B2EB5A /* OAuthSampleAppDelegateTouch.m in Sources */,
 				13E350A2119CA9AE00B2EB5A /* OAuthSampleRootViewControllerTouch.m in Sources */,
 				427056E515FA59AD00EA2F44 /* GTMHTTPFetcherLogging.m in Sources */,
-				421E25FA16012FA20052332E /* GTMOAuthViewControllerTouch.m in Sources */,
 				421E25FF16012FD70052332E /* GTMHTTPFetcher.m in Sources */,
 				421E260516012FE50052332E /* GTMOAuthAuthentication.m in Sources */,
 				421E260716012FE50052332E /* GTMOAuthSignIn.m in Sources */,
@@ -302,7 +295,6 @@
 				13C82E9911373B3100ACAEDD /* OAuthSampleAppDelegateTouch.m in Sources */,
 				13C82E9A11373B3100ACAEDD /* OAuthSampleRootViewControllerTouch.m in Sources */,
 				427056E615FA59AD00EA2F44 /* GTMHTTPFetcherLogging.m in Sources */,
-				421E25FB16012FA20052332E /* GTMOAuthViewControllerTouch.m in Sources */,
 				421E260016012FD70052332E /* GTMHTTPFetcher.m in Sources */,
 				421E260616012FE50052332E /* GTMOAuthAuthentication.m in Sources */,
 				421E260816012FE50052332E /* GTMOAuthSignIn.m in Sources */,

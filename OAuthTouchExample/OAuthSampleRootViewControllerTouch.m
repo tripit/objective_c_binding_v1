@@ -26,6 +26,7 @@
 @synthesize tripIt;
 
 - (void)awakeFromNib {
+    NSLog(@"awakeFromNib");
     // Set this to enable debugging logging of HTTP request/response details
     [GTMHTTPFetcher setLoggingEnabled:YES];
     [self updateUI];
@@ -65,9 +66,6 @@
 
 // Main method that does OAuth
 - (void)signInToTripIt {
-    
-    [self signOut];
-
     // Initialize the TripIt API object
     self.tripIt = [[[TripIt alloc] init] autorelease];
     
@@ -75,7 +73,7 @@
     [tripIt setConsumerKey:@"2b785575d91647d6e3d6d0bc027da8186878eacd" consumerSecret:@"86c0d63f2f2fd101204189abad66e2b8d03410bc" oauthToken:nil oauthTokenSecret:nil];
     
     // uncomment the line below to test only an API fetch
-//    [tripIt setConsumerKey:@"2b785575d91647d6e3d6d0bc027da8186878eacd" consumerSecret:@"86c0d63f2f2fd101204189abad66e2b8d03410bc" oauthToken:@"662a302d76c379f691d7acf5e952638e2ea8ce3a" oauthTokenSecret:@"5dbf25be13491a7b4c082a1efe34803e8f3b0777"];
+//    [tripIt setConsumerKey:@"2b785575d91647d6e3d6d0bc027da8186878eacd" consumerSecret:@"86c0d63f2f2fd101204189abad66e2b8d03410bc" oauthToken:@"USER_OAUTH_TOKEN" oauthTokenSecret:@"USER_OAUTH_TOKEN_SECRET"];
     
     // Set the delegate so that oauth and api return callbacks are executed
     [tripIt setDelegate:self];
@@ -89,6 +87,7 @@
         [self doAnAuthenticatedAPIFetch];
         return;
     }
+    // Start OAuth flow
     UINavigationController *nc = [self navigationController];
     [tripIt performOauthFlow:nc];
 }
@@ -97,30 +96,34 @@
 // Test that the oauth token and secret work and can make an actual API request
 - (void)doAnAuthenticatedAPIFetch {
     [tripIt testApiGet];
-    //    NSDictionary *dict =  [[NSDictionary alloc] initWithObjectsAndKeys:@"true", @"include_objects", nil];
-    //    [tripIt performGetObject:self ofType:@"trip" withId:@"40480359" withFilter:nil];
+
+    // list endpoint
+//    NSDictionary *dict =  [[NSDictionary alloc] initWithObjectsAndKeys:@"true", @"past", nil];
+//    [tripIt performListObjectOfType:@"trip" withFilter:dict];
     
-    //    NSDictionary *dict =  [[NSDictionary alloc] initWithObjectsAndKeys:@"true", @"past", nil];
-    //    [tripIt performListObject:self ofType:@"trip" withFilter:dict];
+    // get endpoint
+//    NSDictionary *dict =  [[NSDictionary alloc] initWithObjectsAndKeys:@"true", @"include_objects", nil];
+//    [tripIt performGetObjectOfType:@"trip" withId:@"50161232" withFilter:nil];
     
-    //    [tripIt performDeleteObject:self ofType:@"air" withId:@"99048401"];
+    // create endpoint
+//    NSString *post = @"<Request><Trip>" \
+//        "<start_date>2014-12-09</start_date>" \
+//        "<end_date>2014-12-27</end_date>" \
+//        "<primary_location>New York, NY</primary_location>" \
+//        "</Trip></Request>";
+//    [tripIt performCreateObjectWithXmlString:post];
     
-    //    NSString *post = @"<Request><Trip>" \
-    //    "<start_date>2014-12-09</start_date>" \
-    //    "<end_date>2014-12-27</end_date>" \
-    //    "<primary_location>New York, NY</primary_location>" \
-    //    "</Trip></Request>";
-    //    
-    //    [tripIt performCreate:self withPostString:post];
+    //replace endpoint
+//    NSString *post = @"<Request><Trip>" \
+//        "<start_date>2014-01-01</start_date>" \
+//        "<end_date>2014-02-01</end_date>" \
+//        "<primary_location>New York, NY</primary_location>" \
+//        "</Trip></Request>";
+//    [tripIt performReplaceObjectOfType:@"trip" withId:@"50161232" withXmlString:post];
     
-    //    NSString *post = @"<Request><Trip>" \
-    //    "<start_date>2014-01-01</start_date>" \
-    //    "<end_date>2014-02-01</end_date>" \
-    //    "<primary_location>New York, NY</primary_location>" \
-    //    "</Trip></Request>";
-    //    
-    //    [tripIt performReplace:self ofType:@"trip" withId:@"46821539" withPostString:post];
-    //    
+    // delete endpoint
+//    [tripIt performDeleteObjectOfType:@"trip" withId:@"50161232"];
+    
 }
 
 

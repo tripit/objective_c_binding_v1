@@ -2,15 +2,26 @@
 //  TripIt.m
 //  OAuthSampleTouch
 //
-//  Created by Tariq Islam on 9/9/12.
-//  Copyright (c) 2012 TripIt. All rights reserved.
+// Copyright 2008-2012 Concur Technologies, Inc.
 //
+// Licensed under the Apache License, Version 2.0 (the "License"); you may
+// not use this file except in compliance with the License. You may obtain
+// a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations
+// under the License.
 
 #import "TripIt.h"
 
 @implementation TripIt
 
 @synthesize auth;
+@synthesize signIn;
 @synthesize delegate;
 @synthesize requestUrl;
 @synthesize accessUrl;
@@ -18,6 +29,7 @@
 @synthesize authorizeCookieUrl;
 @synthesize baseApiUrlStr;
 @synthesize scope;
+@synthesize callback;
 
 // Initializer of the TripIt object
 - (TripIt *)init {
@@ -27,6 +39,7 @@
     self.authorizeCookieUrl = [NSURL URLWithString:@"https://m.tripit.com"];
     self.baseApiUrlStr = @"https://api.tripit.com/v1";
     self.scope = @"https://api.tripit.com/v1/";
+    self.callback = @"tripitapp://OAuthCallback";
     
     return self;
 }
@@ -59,7 +72,7 @@
     return true;
 }
 
-// Performs the 3-legged OAuth flow:
+// Start the 3-legged OAuth flow:
 // - Request access token
 // - User access token to direct user through webview to TripIt's authentication and approval site
 // - Upon approval of app, fetches the user's oauth token and oauth token secret.
@@ -71,41 +84,43 @@
         NSAssert(NO, @"A valid consumer key and consumer secret are required for signing in to TripIt");
     }
     
-    // This could be anything, since we don't really use it; the finishedSelector is instead called
-    // when TripIt redirects with the oauth token and secret
-    [auth setCallback:@"http://www.example.com/OAuthCallback"];
-        
-    // Display the autentication view.
-    GTMOAuthViewControllerTouch *viewController;
-    viewController = [[[GTMOAuthViewControllerTouch alloc] initWithScope:scope
-                                                                language:nil
-                                                         requestTokenURL:requestUrl
-                                                       authorizeTokenURL:authorizeUrl
-                                                          accessTokenURL:accessUrl
-                                                          authentication:auth
-                                                          appServiceName:@"TripIt"
-                                                                delegate:self
-                                                        finishedSelector:@selector(viewController:finishedWithAuth:error:)] autorelease];
+    [auth setCallback:self.callback];
+    [auth setScope:self.scope];
     
-    // Optional: display some html briefly before the sign-in page loads
-    NSString *html = @"<html><body bgcolor=\"#FFF\"><div align=center><font color=\"#3683B5\" style=\"normal 12px Helvetica Neue,Helvetica,Arial,sans-serif;\">Loading TripIt sign-in page...</font></div></body></html>";
-    [viewController setInitialHTMLString:html];
-    
-    // Set a URL for deleting the cookies after sign-in so the next time
-    // the user signs in, the browser does not assume the user is already signed in
-    [viewController setBrowserCookiesURL:authorizeCookieUrl];
-    
-    [navigationController pushViewController:viewController 
-                                    animated:YES];
+    // use the supplied auth and OAuth endpoint URLs
+    signIn = [[GTMOAuthSignIn alloc] initWithAuthentication:auth
+                                             requestTokenURL:self.requestUrl
+                                           authorizeTokenURL:self.authorizeUrl
+                                              accessTokenURL:self.accessUrl
+                                                    delegate:self
+                                          webRequestSelector:@selector(signIn:displayRequest:)
+                                            finishedSelector:@selector(signIn:finishedWithAuth:error:)];
+    [signIn startSigningIn];
 }
 
-- (void)viewController:(GTMOAuthViewControllerTouch *)viewController
-      finishedWithAuth:(GTMOAuthAuthentication *)returnedAuth
-                 error:(NSError *)error {
-    NSLog(@"Returned from Oauth");
+
+// 2nd part of the 3-legged OAuth flow:
+// This is called during the 2nd part of OAUth flow, 
+// when the user has to sign into TripIt from a browser and approve the
+// 3rd party app.
+- (void)signIn:(GTMOAuthSignIn *)signIn displayRequest:(NSURLRequest *)request {
+    if (request != nil) {
+        [[UIApplication sharedApplication] openURL:[request URL]];
+    }
+}
+
+// 3rd part of the 3-legged OAuth flow:
+// fetch the user's oauth token
+- (void)performGetAuthorization:(NSURL *)redirectedRequest {
+    [self.signIn requestRedirected:redirectedRequest];
+}
+
+// 
+- (void)signIn:(GTMOAuthSignIn *)signIn
+finishedWithAuth:(GTMOAuthAuthentication *)returnedAuth
+         error:(NSError *)error { 
     [self.delegate oauthReturned:returnedAuth error:error];
 }
-
 
 // Performs an API fetch using the non-blocking GTMHTTPFetcher
 // This method should never be called directly by the API binding user.
@@ -240,12 +255,14 @@
 
 - (void)dealloc {
     self.auth = nil;
+    self.signIn = nil;
     self.requestUrl = nil;
     self.accessUrl = nil;
     self.authorizeUrl = nil;
     self.authorizeCookieUrl = nil;
     self.baseApiUrlStr = nil;
     self.scope = nil;
+    self.callback = nil;
     [super dealloc];
 }
 

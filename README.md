@@ -14,12 +14,12 @@ An example iPhone application can be seen in the OAuthTouchExample/ directory. T
     - Url Schemes: This is also an array. Add an item to it, with value "tripitapp".
 
 - OAuthSampleRootViewControllerTouch.m
-  - This is the main view controller for the app. Look at the <i>signIntoTripit</i> method, which initializes the TripIt API object, and starts the OAuth flow.
+  - This is the main view controller for the app. Look at the <i>signIntoTripit:</i> method, which initializes the TripIt API object, and starts the OAuth flow.
 
 - OAuthSampleAppDelegateTouch.m
   - The main app delegate should implement the <i>application:openURL:sourceApplication:annotation:</i> method, which is called when an application is opened in response to a custom URL scheme. Within this method, you need to call the performGetAuthorization: method of the TripIt API object in order to continue with a user's OAuth flow.
 
-The doAnAuthenticatedAPIFetch: method within OAuthSampleRootViewControllerTouch.m has example API calls, both in XML and JSON.
+The <i>doAnAuthenticatedAPIFetch:</i> method within OAuthSampleRootViewControllerTouch.m has example API calls, both in XML and JSON.
 
 Please also refer to the API's main page here:
 

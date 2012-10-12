@@ -48,7 +48,7 @@
                                      oauthToken:(NSString *)myOauthToken 
                                oauthTokenSecret:(NSString *)myOauthTokenSecret;
 
-- (void)performOauthFlow:(UINavigationController *)navigationController;
+- (void)performOauthFlow;
 
 - (void)performGetAuthorization:(NSURL *)redirectedRequest;
 

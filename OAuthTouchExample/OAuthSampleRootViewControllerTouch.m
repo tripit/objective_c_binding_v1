@@ -88,8 +88,7 @@
         return;
     }
     // Start OAuth flow
-    UINavigationController *nc = [self navigationController];
-    [tripIt performOauthFlow:nc];
+    [tripIt performOauthFlow];
 }
 
 

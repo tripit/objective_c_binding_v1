@@ -77,7 +77,7 @@
 // - User access token to direct user through webview to TripIt's authentication and approval site
 // - Upon approval of app, fetches the user's oauth token and oauth token secret.
 // - Calls the finishedSelector
-- (void)performOauthFlow:(UINavigationController *)navigationController {
+- (void)performOauthFlow {
     
     if (auth == nil) {
         // perhaps display something friendlier in the UI?

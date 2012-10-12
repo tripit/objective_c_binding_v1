@@ -29,8 +29,6 @@
 		421E260616012FE50052332E /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E260216012FE50052332E /* GTMOAuthAuthentication.m */; };
 		421E260716012FE50052332E /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E260416012FE50052332E /* GTMOAuthSignIn.m */; };
 		421E260816012FE50052332E /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E260416012FE50052332E /* GTMOAuthSignIn.m */; };
-		421E260A160130160052332E /* GTMOAuthViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421E2609160130160052332E /* GTMOAuthViewTouch.xib */; };
-		421E260B160130160052332E /* GTMOAuthViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421E2609160130160052332E /* GTMOAuthViewTouch.xib */; };
 		421E260E160130250052332E /* TripIt.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E260D160130250052332E /* TripIt.m */; };
 		421E260F160130250052332E /* TripIt.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E260D160130250052332E /* TripIt.m */; };
 		427056E515FA59AD00EA2F44 /* GTMHTTPFetcherLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 427056E415FA59AD00EA2F44 /* GTMHTTPFetcherLogging.m */; };
@@ -63,7 +61,6 @@
 		421E260216012FE50052332E /* GTMOAuthAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthAuthentication.m; sourceTree = "<group>"; };
 		421E260316012FE50052332E /* GTMOAuthSignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthSignIn.h; sourceTree = "<group>"; };
 		421E260416012FE50052332E /* GTMOAuthSignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthSignIn.m; sourceTree = "<group>"; };
-		421E2609160130160052332E /* GTMOAuthViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuthViewTouch.xib; sourceTree = "<group>"; };
 		421E260C160130250052332E /* TripIt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripIt.h; sourceTree = "<group>"; };
 		421E260D160130250052332E /* TripIt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripIt.m; sourceTree = "<group>"; };
 		427056E315FA59AD00EA2F44 /* GTMHTTPFetcherLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcherLogging.h; sourceTree = "<group>"; };
@@ -180,7 +177,6 @@
 				421E260216012FE50052332E /* GTMOAuthAuthentication.m */,
 				421E260316012FE50052332E /* GTMOAuthSignIn.h */,
 				421E260416012FE50052332E /* GTMOAuthSignIn.m */,
-				421E2609160130160052332E /* GTMOAuthViewTouch.xib */,
 			);
 			name = "OAuth Classes and Resources";
 			sourceTree = "<group>";
@@ -255,7 +251,6 @@
 			files = (
 				4F244813121F263E00FEE1DA /* OAuthSampleMainTouch.xib in Resources */,
 				1301BB45119CB4B100A33D6C /* OAuthSampleMainiPad.xib in Resources */,
-				421E260A160130160052332E /* GTMOAuthViewTouch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +260,6 @@
 			files = (
 				4FEED6C41223346C006FB4BC /* OAuthSampleMainTouch.xib in Resources */,
 				4F244812121F263500FEE1DA /* OAuthSampleMainiPad.xib in Resources */,
-				421E260B160130160052332E /* GTMOAuthViewTouch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

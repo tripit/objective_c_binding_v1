@@ -72,10 +72,10 @@
     self.tripIt = [[[TripIt alloc] init] autorelease];
     
     // uncomment the line below to test complete OAuth flow
-    [tripIt setConsumerKey:@"2b785575d91647d6e3d6d0bc027da8186878eacd" consumerSecret:@"86c0d63f2f2fd101204189abad66e2b8d03410bc" oauthToken:nil oauthTokenSecret:nil];
+    [tripIt setConsumerKey:@"YOUR_KEY" consumerSecret:@"YOUR_SECRET" oauthToken:nil oauthTokenSecret:nil];
     
     // uncomment the line below to test only an API fetch
-//    [tripIt setConsumerKey:@"2b785575d91647d6e3d6d0bc027da8186878eacd" consumerSecret:@"86c0d63f2f2fd101204189abad66e2b8d03410bc" oauthToken:@"USER_OAUTH_TOKEN" oauthTokenSecret:@"USER_OAUTH_TOKEN_SECRET"];
+//    [tripIt setConsumerKey:@"YOUR_KEY" consumerSecret:@"YOUR_SECRET" oauthToken:@"USER_OAUTH_TOKEN" oauthTokenSecret:@"USER_OAUTH_TOKEN_SECRET"];
     
     // Set the delegate so that oauth and api return callbacks are executed
     [tripIt setDelegate:self];
